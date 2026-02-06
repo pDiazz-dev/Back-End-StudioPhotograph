@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tb_users")
 @Getter
 @Setter
 public class Users {
@@ -22,5 +22,13 @@ public class Users {
 
     private String userPassword;
 
+
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    //tabela relacionada N to N, nova tabela chamada 'tb_user_roles'
+    @JoinTable(
+            name = "tb_user_roles",
+            joinColumns = @JoinColumn(name = "tb_users"),
+            inverseJoinColumns = @JoinColumn(name = "tb_roles")
+    )
     private Set<Roles> roles;
 }

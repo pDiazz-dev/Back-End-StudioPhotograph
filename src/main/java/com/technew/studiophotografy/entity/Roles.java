@@ -1,9 +1,13 @@
 package com.technew.studiophotografy.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "roles")
+@Getter
+@Setter
+@Table(name = "tb_roles")
 public class Roles {
 
 
@@ -13,5 +17,22 @@ public class Roles {
     private Long idRole;
 
     private String name;
+
+
+    public enum Ralos{
+        CLIENT(2L),
+        ADMIN(1L);
+
+        private final Long roleId;
+        Ralos(Long roleId) {
+            this.roleId = roleId;
+        }
+
+
+        public Long GetRoleId() {
+            return this.roleId;
+        }
+    }
+
 
 }
