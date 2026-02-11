@@ -1,22 +1,25 @@
-package com.technew.studiophotografy.service;
+package com.technew.studiophotografy.entity.user.auth;
 
-import com.technew.studiophotografy.auth.AuthoredUser;
-import com.technew.studiophotografy.repositorys.UserRepository;
+import com.technew.studiophotografy.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class UserDetailsServiceImple implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     UserDetailsServiceImple(UserRepository userRepository) {
-        userRepository = userRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         return userRepository.findByUserEmail(userEmail)
-                .map(AuthoredUser::new)
+                .map(AuthorizedUser::new)
                 .orElseThrow(() -> new UsernameNotFoundException(userEmail));
+
     }
 }

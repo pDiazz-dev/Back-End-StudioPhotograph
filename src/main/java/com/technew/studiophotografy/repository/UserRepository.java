@@ -1,6 +1,6 @@
-package com.technew.studiophotografy.repositorys;
+package com.technew.studiophotografy.repository;
 
-import com.technew.studiophotografy.entity.Users;
+import com.technew.studiophotografy.entity.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
