@@ -19,19 +19,19 @@ import javax.management.relation.Role;
 @Service
 public class AuthService {
 
+    @Autowired
     private AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final RolesRepository rolesRepository;
     public AuthService(UserRepository userRepository, RolesRepository rolesRepository) {
         this.userRepository = userRepository;
         this.rolesRepository = rolesRepository;
-        this.authenticationManager = authenticationManager;
     }
 
 
     public ResponseEntity login(AuthUserDTO authUserDTO){
         var usernamePassword= new UsernamePasswordAuthenticationToken(authUserDTO.userEmail(), authUserDTO.userPassword());
-        var auth = authenticationManager.authenticate(usernamePassword);
+        var auth = this.authenticationManager.authenticate(usernamePassword);
 
         return ResponseEntity.ok().build();
     }
