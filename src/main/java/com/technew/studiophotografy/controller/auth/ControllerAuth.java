@@ -2,7 +2,8 @@ package com.technew.studiophotografy.controller.auth;
 
 import com.technew.studiophotografy.entity.user.DTOs.AuthUserDTO;
 import com.technew.studiophotografy.entity.user.DTOs.RegisterDTO;
-import com.technew.studiophotografy.service.secuty.AuthService;
+import com.technew.studiophotografy.service.security.AuthService;
+import com.technew.studiophotografy.service.security.DTOs.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,9 @@ public class ControllerAuth {
     private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthUserDTO authUserDTO) {
-        authService.login(authUserDTO);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<LoginResponse> login(@RequestBody AuthUserDTO authUserDTO) {
+        return authService.login(authUserDTO);
+
     }
 
     @PostMapping("/register")
