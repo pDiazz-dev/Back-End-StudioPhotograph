@@ -4,8 +4,8 @@ import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
-import org.hibernate.StatelessSession;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -42,20 +42,19 @@ private RSAPublicKey publicKey;
 
 
 
-// Configuração do spring secuty deixando a endpoint /login livre para todos
+// Configuração do spring security deixando a endpoint /login livre para todos
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf(AbstractHttpConfigurer::disable)
-                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+                .csrf(AbstractHttpConfigurer::disable) //--> ativar apos testes
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers(PathRequest.toH2Console()).permitAll()
                         .requestMatchers(HttpMethod.POST , "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST , "/auth/register").permitAll()
-                        .requestMatchers(("/h2-console/**")).permitAll() // -> APAGAR DEPOIS
                         .requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated());
-
         return http.build();
     }
 
