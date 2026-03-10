@@ -1,4 +1,4 @@
 package com.technew.studiophotografy.service.security.DTOs;
 
-public record RefreshToken() {
+public record RefreshTokenDTO(String refreshToken) {
 }

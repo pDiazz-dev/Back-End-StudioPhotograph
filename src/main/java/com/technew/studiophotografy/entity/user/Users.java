@@ -36,4 +36,8 @@ public class Users {
             inverseJoinColumns = @JoinColumn(name = "id_role")
     )
     private Set<Roles> roles =  new HashSet<>();
+
+    @OneToMany
+    private RefreshToken refreshToken;
+
 }
