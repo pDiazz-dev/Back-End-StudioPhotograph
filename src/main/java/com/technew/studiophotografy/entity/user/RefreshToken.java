@@ -14,13 +14,15 @@ public class RefreshToken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String refreshId;
+    private Long refreshId;
 
+    @Column(columnDefinition = "TEXT")
     private String token;
 
     private Instant expiresAt;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private Users users;
 
 }

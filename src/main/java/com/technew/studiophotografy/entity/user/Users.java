@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -38,6 +39,6 @@ public class Users {
     private Set<Roles> roles =  new HashSet<>();
 
     @OneToMany
-    private RefreshToken refreshToken;
+    private List<RefreshToken> refreshToken;
 
 }

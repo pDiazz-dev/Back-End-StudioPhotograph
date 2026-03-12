@@ -37,7 +37,7 @@ public class AuthService {
 
 
     public ResponseEntity<LoginResponse> login(AuthUserDTO authUserDTO){
-        var user =userRepository.findByUserEmail(authUserDTO.userEmail())
+        var user = userRepository.findByUserEmail(authUserDTO.userEmail())
                 .orElseThrow(()-> new RuntimeException("User or password not found"));
 
         var usernamePassword= new UsernamePasswordAuthenticationToken(authUserDTO.userEmail(), authUserDTO.userPassword());
@@ -82,7 +82,6 @@ public class AuthService {
         refreshTokenRepository.delete(tokenRefresh);
         String newAcessToken = tokenService.generateAccessToken(user);
         String newRefreshToken = tokenService.generateRefreshToken(user);
-
 
 
         return ResponseEntity.ok(new LoginResponse(

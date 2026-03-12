@@ -38,6 +38,7 @@ public class TokenService {
     // GERAÇÃO DE TOKEN PADRONIZADA
     private String generateToken(Users user, Map<String, Object> claims, Long expires) {
 
+
         Instant now = Instant.now();
 
         JwtClaimsSet.Builder builder = JwtClaimsSet.builder()
@@ -90,6 +91,7 @@ public class TokenService {
         // criação refresh token para por no db
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setExpiresAt(expiresAt);
+        refreshToken.setUsers(user);
         refreshToken.setToken(tokenRefresh);
 
 
