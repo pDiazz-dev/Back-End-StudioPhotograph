@@ -1,6 +1,6 @@
 package com.technew.studiophotografy.entity.user.auth;
 
-import com.technew.studiophotografy.repository.UserRepository;
+import com.technew.studiophotografy.repository.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

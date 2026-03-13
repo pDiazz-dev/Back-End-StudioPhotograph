@@ -3,7 +3,7 @@ package com.technew.studiophotografy.service.security.tokens;
 
 import com.technew.studiophotografy.entity.user.RefreshToken;
 import com.technew.studiophotografy.entity.user.Users;
-import com.technew.studiophotografy.repository.RefreshTokenRepository;
+import com.technew.studiophotografy.repository.user.RefreshTokenRepository;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;

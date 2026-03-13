@@ -1,9 +1,10 @@
 package com.technew.studiophotografy.entity.user;
 
+import com.technew.studiophotografy.entity.colaborator.Colaborator;
+import com.technew.studiophotografy.entity.colaborator.studio.schedule.Schedule;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.HashSet;
 import java.util.List;
@@ -29,6 +30,9 @@ public class Users {
     private String userPassword;
 
 
+    @OneToMany(mappedBy = "users")
+    private List<Schedule> schedule;
+
     @ManyToMany(fetch = FetchType.LAZY)
     //tabela relacionada N to N, nova tabela chamada 'tb_user_roles'
     @JoinTable(
@@ -38,7 +42,10 @@ public class Users {
     )
     private Set<Roles> roles =  new HashSet<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "user_id")
     private List<RefreshToken> refreshToken;
+
+    @OneToOne(mappedBy = "users")
+    private Colaborator colaborator;
 
 }

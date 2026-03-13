@@ -1,6 +1,6 @@
 package com.technew.studiophotografy.service.security.tokens;
 
-import com.technew.studiophotografy.repository.RefreshTokenRepository;
+import com.technew.studiophotografy.repository.user.RefreshTokenRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

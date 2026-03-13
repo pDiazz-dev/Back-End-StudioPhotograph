@@ -1,8 +1,7 @@
-package com.technew.studiophotografy.repository;
+package com.technew.studiophotografy.repository.user;
 
 import com.technew.studiophotografy.entity.user.RefreshToken;
 import jakarta.transaction.Transactional;
-import org.apache.el.parser.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

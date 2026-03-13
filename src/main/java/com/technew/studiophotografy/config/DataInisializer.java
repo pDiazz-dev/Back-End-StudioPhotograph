@@ -2,7 +2,7 @@ package com.technew.studiophotografy.config;
 
 import com.technew.studiophotografy.entity.user.Roles;
 import com.technew.studiophotografy.entity.user.TypeRole;
-import com.technew.studiophotografy.repository.RolesRepository;
+import com.technew.studiophotografy.repository.user.RolesRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
